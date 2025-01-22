@@ -49,7 +49,7 @@ var err error
 
 func init() {
 	// Database connection string for PostgreSQL (update with your credentials)
-	connStr := "user=postgres dbname=vietnamese_administrative_units password=1 host=localhost port=5432"
+	connStr := "user=postgres dbname=postgres password=1 host=localhost port=5432"
 	db, err = gorm.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal("Failed to connect to database: ", err)
@@ -115,6 +115,7 @@ func getWards(c *gin.Context) {
 }
 
 func main() {
+	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.Use(CORSMiddleware())
 
